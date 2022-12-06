@@ -1,5 +1,5 @@
 module "kubernetes" {
-  source = "github.com/chivalryq/terraform-alicloud-kubernetes"
+  source = "github.com/FogDong/terraform-alicloud-kubernetes"
 
   new_nat_gateway       = true
   vpc_name              = var.vpc_name
@@ -166,4 +166,10 @@ variable "k8s_version" {
 output "CLUSTER_ID" {
   value       = module.kubernetes.cluster_id
   description = "The ID of the cluster"
+}
+
+output "KUBECONFIG" {
+  value = module.kubernetes.kube_config
+  sensitive = true
+  description = "The KUBECONFIG of the cluster"
 }
